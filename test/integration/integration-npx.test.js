@@ -40,6 +40,7 @@ function scaffoldProject(basePath, files) {
 async function execCommand(command, options = {}) {
   return new Promise((resolve, reject) => {
     exec(command, options, (error, stdout, stderr) => {
+      stderr && console.error(stderr)
       if (error) {
         reject(error)
       } else {
