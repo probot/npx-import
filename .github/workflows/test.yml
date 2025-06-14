@@ -108,7 +108,7 @@ jobs:
         run: bun test --timeout 15000
 
   test-bun-windows:
-    name: Test on Bun
+    name: Test on Bun (windows-latest)
     runs-on: windows-latest
     needs:
       - lint
