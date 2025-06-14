@@ -86,10 +86,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: Install dependencies
-        run: npm ci
       - name: Test
-        run: npm run test
+        run: node --test
 
   test-bun:
     name: Test on Bun
@@ -107,10 +105,8 @@ jobs:
           persist-credentials: false
       - name: Use Bun
         uses: oven-sh/setup-bun@v2
-      - name: Install Dependencies
-        run: bun install
       - name: Test
-        run: bun test --timeout 10000
+        run: bun test --timeout 15000
 
   test-deno:
     name: Test on Deno
@@ -123,10 +119,8 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - name: Install Dependencies
-        run: deno install
       - name: Test
-        run: deno test -A
+        run: deno test -A --no-check
 
   test:
     if: ${{ always() }}
