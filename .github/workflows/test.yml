@@ -97,29 +97,6 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Use Bun
-        uses: oven-sh/setup-bun@v2
-      - name: Test
-        run: bun test --timeout 15000
-
-  test-bun-windows:
-    name: Test on Bun
-    runs-on: ${{ matrix.os }}
-    needs:
-      - lint
-      - test-node
-      - test-deno
-      - test-bun
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
           - windows-latest
     steps:
       - name: Check out repository
@@ -158,8 +135,7 @@ jobs:
       - test-node
       - test-bun
       - test-deno
-      - test-bun-windows
 
     steps:
       - run: exit 1
-        if: ${{ needs.test-node.result != 'success' || needs.test-deno.result != 'success' || needs.test-bun-windows.result != 'success' || needs.test-bun.result != 'success' }}
+        if: ${{ needs.test-node.result != 'success' || needs.test-deno.result != 'success' || needs.test-bun.result != 'success' }}
