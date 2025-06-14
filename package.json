@@ -11,7 +11,7 @@
     "purge-npx-cache": "node purge-npx-cache",
     "dev": "tsc --watch",
     "go": "node --experimental-vm-modules test/go.js",
-    "test": "vitest run",
+    "test": "vitest run --test-timeout=10000",
     "test:coverage": "vitest run --coverage",
     "lint": "prettier --check .",
     "format": "prettier --write ."

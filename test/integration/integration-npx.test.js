@@ -137,10 +137,9 @@ describe(`integration npx`, () => {
     ])
 
     fs.mkdirSync(path.resolve(mainPackage, 'node_modules', '.bin'), { recursive: true })
-    fs.symlinkSync(
+    fs.copyFileSync(
       path.resolve(mainPackage, 'index.js'),
       path.resolve(mainPackage, 'node_modules', '.bin', 'test'),
-      'file',
     )
 
     const resNodeIndex = await execCommand('node index.js', {
@@ -179,10 +178,9 @@ describe(`integration npx`, () => {
     ])
 
     fs.mkdirSync(path.resolve(projectPackage, 'node_modules', '.bin'), { recursive: true })
-    fs.symlinkSync(
+    fs.copyFileSync(
       path.resolve(projectPackage, 'index.js'),
       path.resolve(projectPackage, 'node_modules', '.bin', 'test-case'),
-      'file',
     )
 
     await execCommand('npm link test-npx', {
