@@ -38,7 +38,7 @@ export type Options = {
    * A logger function to use for logging messages.
    */
   logger?: {
-    log: (message: string) => void
+    log: (message?: any, ...optionalParams: any[]) => void
   }
   /**
    * A function to import a package by its name.
